@@ -37,10 +37,10 @@ class MouseEventListener(sublime_plugin.EventListener):
 	sublime_plugin.all_callbacks.setdefault('on_pre_mouse_down', [])
 	sublime_plugin.all_callbacks.setdefault('on_post_mouse_down', [])
 
-
+"""
 class MouseEventProcessor(MouseEventListener):
 	def on_pre_mouse_down(self, args):
 		print "on pre-click!", args
 	def on_post_mouse_down(self, point):
 		print "on post-click!", point
-
+"""
