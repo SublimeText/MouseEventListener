@@ -2,8 +2,8 @@ import sublime, sublime_plugin
 
 class DragSelectCallbackCommand(sublime_plugin.TextCommand):
 	def run_(self, args):
-		for c in sublime_plugin.all_callbacks.setdefault('on_pre_click',[]):
-			c.on_pre_click(args)
+		for c in sublime_plugin.all_callbacks.setdefault('on_pre_mouse_down',[]):
+			c.on_pre_mouse_down(args)
 		
 		#We have to make a copy of the selection, otherwise we'll just have
 		#a *reference* to the selection which is useless if we're trying to
@@ -25,8 +25,8 @@ class DragSelectCallbackCommand(sublime_plugin.TextCommand):
 		#This is the "real" drag_select that alters the selection for real.
 		self.view.run_command("drag_select", args)
 		
-		for c in sublime_plugin.all_callbacks.setdefault('on_post_click',[]):
-			c.on_post_click(click_point)
+		for c in sublime_plugin.all_callbacks.setdefault('on_post_mouse_down',[]):
+			c.on_post_mouse_down(click_point)
 
 class MouseEventListener(sublime_plugin.EventListener):
 	#If we add the callback names to the list of all callbacks, Sublime
@@ -34,13 +34,13 @@ class MouseEventListener(sublime_plugin.EventListener):
 	#You don't actually *need* to inherit from MouseEventListener, but
 	#doing so forces you to import this file and therefore forces Sublime
 	#to add these to its callback list.
-	sublime_plugin.all_callbacks.setdefault('on_pre_click', [])
-	sublime_plugin.all_callbacks.setdefault('on_post_click', [])
+	sublime_plugin.all_callbacks.setdefault('on_pre_mouse_down', [])
+	sublime_plugin.all_callbacks.setdefault('on_post_mouse_down', [])
 
 
 class MouseEventProcessor(MouseEventListener):
-	def on_pre_click(self, args):
+	def on_pre_mouse_down(self, args):
 		print "on pre-click!", args
-	def on_post_click(self, point):
+	def on_post_mouse_down(self, point):
 		print "on post-click!", point
 
