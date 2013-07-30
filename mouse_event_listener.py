@@ -17,7 +17,7 @@ class DragSelectCallbackCommand(sublime_plugin.TextCommand):
 		new_sel = self.view.sel()
 		click_point = new_sel[0].a
 		
-		#Restore the old selection so when we call drag_select in will
+		#Restore the old selection so when we call drag_select it will
 		#behave normally.
 		new_sel.clear()
 		map(new_sel.add, old_sel)
