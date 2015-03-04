@@ -20,7 +20,8 @@ class DragSelectCallbackCommand(sublime_plugin.TextCommand):
 		#Restore the old selection so when we call drag_select it will
 		#behave normally.
 		new_sel.clear()
-		map(new_sel.add, old_sel)
+		for r in old_sel:
+			new_sel.add(r)
 		
 		#This is the "real" drag_select that alters the selection for real.
 		self.view.run_command("drag_select", args)
