@@ -1,7 +1,7 @@
 import sublime, sublime_plugin
 
 class DragSelectCallbackCommand(sublime_plugin.TextCommand):
-	def run_(self, args):
+	def run_(self, edit, args):
 		for c in sublime_plugin.all_callbacks.setdefault('on_pre_mouse_down',[]):
 			c.on_pre_mouse_down(args)
 		
