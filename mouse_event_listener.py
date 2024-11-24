@@ -26,8 +26,9 @@ class DragSelectCallbackCommand(sublime_plugin.TextCommand):
 		#This is the "real" drag_select that alters the selection for real.
 		self.view.run_command("drag_select", args)
 		
+		#Expose click-event-arguments to on_post_mouse_down
 		for c in sublime_plugin.all_callbacks.setdefault('on_post_mouse_down',[]):
-			c.on_post_mouse_down(click_point)
+			c.on_post_mouse_down(args, click_point)
 
 class MouseEventListener(sublime_plugin.EventListener):
 	#If we add the callback names to the list of all callbacks, Sublime
