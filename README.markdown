@@ -1,7 +1,15 @@
 MouseEventListener
 ======
 
-MouseEventListener adds two new callbacks to Sublime Text 2's plugin API:
+> [!NOTE]
+> Sublime Text build 4149 (stable: 4151, 2 August 2023)
+> added support for the `context` key in mouse bindings.
+>
+> If you used or want to use this package
+> for the purpose of emulating such a context query,
+> you should use the native functionality instead.
+
+MouseEventListener adds two new callbacks to Sublime Text's plugin API:
 
 * `on_pre_click({'event': {'x': screen_x, 'y': screen_y, 'button': button}})`
 * `on_post_click(text_point)`
@@ -15,6 +23,8 @@ Install
 
 This plugin is available through Package Control, which is available here:
 
-    http://wbond.net/sublime_packages/package_control
+    http://packagecontol.io/sublime_packages/package_control
 
-As far as I know, Package Control does not handle dependencies, so if you depend on this package you may have to mention installing it in your install instructions.
+Package Control does not support support dependency chains among packages,
+so if you depend on this package, 
+you have to mention installing it in your installation instructions.
